@@ -35,5 +35,3 @@ _testmain.go
 *.local.yml
 dumped_hertz_remote_config.json
 API-Gateway
-lower
-upper
