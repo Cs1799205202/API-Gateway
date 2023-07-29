@@ -3,12 +3,9 @@
 package main
 
 import (
-	"context"
-	"net/http"
-
 	handler "github.com/Cs1799205202/API-Gateway/biz/handler"
+	"github.com/Cs1799205202/API-Gateway/biz/handler/gateway"
 	"github.com/Cs1799205202/API-Gateway/biz/handler/idl_management"
-	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
 
@@ -16,9 +13,7 @@ import (
 func customizedRegister(r *server.Hertz) {
 	r.GET("/ping", handler.Ping)
 
-	r.GET("/agw/", func(ctx context.Context, req *app.RequestContext) {
-		req.JSON(http.StatusOK, "Welcome to API Gateway!")
-	})
+	r.GET("/agw/", gateway.Greeting)
 
 	r.GET("/idl/list", idl_management.ListService)
 
@@ -26,4 +21,8 @@ func customizedRegister(r *server.Hertz) {
 	r.DELETE("/idl/delete/:servicename", idl_management.DeleteService)
 
 	// your code ...
+}
+
+func Register(r *server.Hertz) {
+	customizedRegister(r)
 }

@@ -20,6 +20,10 @@ import (
 
 var ClientMap sync.Map
 
+func Greeting(ctx context.Context, req *app.RequestContext) {
+	req.String(http.StatusOK, "Welcome to API Gateway!")
+}
+
 // Route .
 // @router /agw/:ServiceName/:MethodName [POST]
 func Route(ctx context.Context, c *app.RequestContext) {
